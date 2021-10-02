@@ -1,0 +1,163 @@
+#ifndef MYBITSE
+#define MYBITSE
+
+#include <iostream>
+using namespace std;
+
+template <unsigned int sizeofbts>
+
+class mybitsse
+{
+public:
+	mybitsse() {
+		nll();
+	}
+	
+	string setbts(int);
+	
+	 string setfromindex(int, bool);
+	 int setcountone();
+	 int setsize();
+	string  operator|(const mybitsse <sizeofbts>& obj15) {
+		
+			string line3 = "";
+			string line1 = objbts;
+			string line2 = obj15.objbts;
+			for (int i = 0; i < line1.length(); ++i) {
+
+				if (line1[i] == '0' && line2[i] == '0') {
+					line3 += '0';
+				}
+				else {
+					line3 += '1';
+				}
+
+			}
+			return line3;
+
+		
+	 }
+
+	string operator^(const mybitsse <sizeofbts>& obj14) {
+		string line3 = "";
+		string line1 = objbts;
+		string line2 = obj14.objbts;
+		for (int i = 0; i < line1.length(); ++i) {
+
+			if (line1[i] == '1' && line2[i] == '1') {
+				line3 += '0';
+			}
+			else if(line1[i]=='0'&&line2[i]=='0') {
+				line3 += '0';
+			}
+			else {
+				line3 += '1';
+			}
+
+		}
+		return line3;
+	}
+	string operator&(const mybitsse <sizeofbts>& obj14) {
+		string line3 = "";
+		string line1 = objbts;
+		string line2 = obj14.objbts;
+		for (int i = 0; i < line1.length(); ++i) {
+			if (line1[i] == line2[i]) {
+				line3 += line1[i];
+			}
+		}
+		return line3;
+
+	}
+private:
+	void nll() {
+		objbts = "";
+		for (int i = 0; i < sizeofbts; ++i) {
+			objbts += '0';
+		}
+	}
+	string objbts;
+	
+    
+};
+
+
+template <unsigned int sizeofbts>
+int mybitsse<sizeofbts> ::setsize() {
+	return sizeofbts;
+}
+
+template <unsigned int sizeofbts>
+int mybitsse<sizeofbts>::setcountone() {
+	int e=0;
+	for (int i = 0; i < objbts.length(); ++i) {
+		if (objbts[i] == '1') {
+			++e;
+		}
+	}
+	return e;
+}
+
+
+template <unsigned int sizeofbts>
+string mybitsse<sizeofbts>::setfromindex(int index, bool t) {
+	if (t == true) {
+		objbts[index] = '1';
+		return objbts;
+	}
+	else{
+		objbts[index] = '0';
+	return objbts;
+	}
+}
+
+
+
+
+
+template <unsigned int sizeofbts>
+string mybitsse<sizeofbts>::setbts(int a) {
+	if (a <= 0) { return " "; }
+	string b = "";
+	int e = sizeofbts;
+	nll();
+	int c;
+	if (a == 1) {
+		objbts[sizeofbts - 1] = '1';
+		return objbts;
+	}
+	while (a > 2) {
+		
+		c = a % 2;
+		if ( c== 0) {
+			b += '0';
+			a /= 2;
+		}
+		else {
+			
+			b += '1';
+			a -= 1;
+			a /= 2;
+			
+		}
+	}
+
+	if (a == 2||a==1) {
+		b+= '1';
+		
+	}
+	
+	if (sizeofbts >= b.size()) {
+		for (int i = 0; i<b.length(); ++i) {
+
+			--e;
+			objbts[e] = b[i];
+
+		}
+
+		return objbts;
+	}
+	else { return " "; }
+}
+
+#endif //mybitsse
