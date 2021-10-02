@@ -7,7 +7,7 @@ int main()
 	
 	string e = "";
 	mybitsse<6> obj1;
-	mybitsse<2> obj2;
+	mybitsse<8> obj2;
 	cout<<"85(10) -> *(6):"<<obj1.setbts(85)<<endl;
 	cout << "*(16) ->(2):" << obj2.setbts(16) << endl;
 	
